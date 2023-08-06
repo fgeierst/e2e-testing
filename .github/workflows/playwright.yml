@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [ main ]
   schedule:
-    - cron: '0 5 * * 1,5'
+    - cron: '0 5 * * 1'
 jobs:
   test:
     timeout-minutes: 60
@@ -23,8 +23,6 @@ jobs:
         cache: 'pnpm'
     - name: Install dependencies
       run: pnpm install
-    - name: Install Playwright Browsers
-      run: pnpm exec playwright install --with-deps
     - name: Run Playwright tests
       run: pnpm exec playwright test
     - uses: actions/upload-artifact@v3
